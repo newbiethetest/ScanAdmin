@@ -13,9 +13,7 @@ def usage():
 Usage:python scanadmin.py [-u|-e|-f]
 
     -u:Url is what U want to scan
-           Example:scanadmin.py -u "http://www.baidu.com"
-    -e:Except by keyword,that equivalent to a custom 404 page
-           Example:scanadmin.py -u "http://www.baidu.com" -e "safedog"
+           Example:scanadmin.py -u "http://www.baidu.com"             
     -f:File data like "editor" or"admin" etc
            Example:scanadmin.py -u "http://www.baidu.com" -f "/home/admin.txt"
  '''
@@ -26,13 +24,12 @@ def normaldomain(str):
        newstr=str[0:(i+1)]
        for a in admin:
            dir.append(newstr+a)
-
-
+           
 def btdomain(target_url):
     newstr=target_url.split('-')
     for item in newstr:
         normaldomain(item)
-
+        
 def FileScan(file):
     f=open(file)
     data=f.readlines()
@@ -87,9 +84,6 @@ def main():
                 elif opt == "-f":
                     file=arg
                     FileScan(file)
-
-                elif opt == "-e":
-                    exception=arg
         except:
             usage()
             sys.exit(1)
